@@ -33,19 +33,19 @@ inquirer.prompt([
     }
 
 ]).then((data)=> {
-    const {textColor, logoName, shapeColor} = data
+    const {textColor, logoName, shape, shapeColor} = data
     
 
     let logo;
-    if(data.shape === 'Cirle'){
-        logo = new Circle(textColor, logoName, shapeColor)
-    } else if (data.shape === 'Triangle'){
-        logo = new Triangle(textColor, logoName, shapeColor)
+    if(shape === 'Circle'){
+        logo = new Circle(textColor, shapeColor)
+    } else if (shape === 'Triangle'){
+        logo = new Triangle(textColor, shapeColor)
     } else {
-        logo = new Square(textColor, logoName, shapeColor)
+        logo = new Square(textColor, shapeColor)
     }
 
-    fs.writeFile(`./lib/logo.svg`, logo.render(), (err) =>
+    fs.writeFile(`./lib/logo.svg`, logo.render(logoName), (err) =>
     err ? console.log(err) : console.log('Your logo has been created!'))
 }).catch((err) => {
     console.log(`Error: ${err}`)
