@@ -1,9 +1,8 @@
-//import, user input, write a file...............
-
-
+//
 const fs = require ('fs')
 const inquirer = require ('inquirer')
 const {Shapes, Triangle, Circle, Square} = require ('./lib/shapes.js')
+const {validateTextLength} = require('./lib/svg.js')
 
 inquirer.prompt([
     {
@@ -34,9 +33,9 @@ inquirer.prompt([
 
 ]).then((data)=> {
     const {textColor, logoName, shape, shapeColor} = data
-    
-
-    let logo;
+       
+    if (validateTextLength(logoName)) {
+     let logo;
     if(shape === 'Circle'){
         logo = new Circle(textColor, shapeColor)
     } else if (shape === 'Triangle'){
@@ -44,9 +43,11 @@ inquirer.prompt([
     } else {
         logo = new Square(textColor, shapeColor)
     }
-
     fs.writeFile(`./lib/logo.svg`, logo.render(logoName), (err) =>
-    err ? console.log(err) : console.log('Your logo has been created!'))
+    err ? console.log(err) : console.log('logo.svg has been generated!'))
+    }
+
+    
 }).catch((err) => {
     console.log(`Error: ${err}`)
 })
