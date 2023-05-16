@@ -1,9 +1,10 @@
-//
+//Packages for the application
 const fs = require ('fs')
 const inquirer = require ('inquirer')
 const {Shapes, Triangle, Circle, Square} = require ('./lib/shapes.js')
 const {validateTextLength} = require('./lib/svg.js')
 
+//Prompts user to answer questions
 inquirer.prompt([
     {
         type:'input',
@@ -33,7 +34,8 @@ inquirer.prompt([
 
 ]).then((data)=> {
     const {textColor, logoName, shape, shapeColor} = data
-       
+    
+    //Create instance of classes if the condition for input length is fulfilled
     if (validateTextLength(logoName)) {
      let logo;
     if(shape === 'Circle'){
@@ -43,10 +45,9 @@ inquirer.prompt([
     } else {
         logo = new Square(textColor, shapeColor)
     }
-    fs.writeFile(`./lib/logo.svg`, logo.render(logoName), (err) =>
+    fs.writeFile(`./examples/logo.svg`, logo.render(logoName), (err) =>
     err ? console.log(err) : console.log('logo.svg has been generated!'))
     }
-
     
 }).catch((err) => {
     console.log(`Error: ${err}`)
