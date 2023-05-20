@@ -35,7 +35,7 @@ Open the root directory of the application, and run a command <node index.js> in
   
 You can also follow the syntax below to view a walkthrough video that demonsatrates the functionality of the application.
 
-  ![Demo Video] ( https://drive.google.com/file/d/1PndoUeqoZpa1ayzvFm2NdY1JWZFsq5K-/view ) 
+  ![Demo Video] (https://drive.google.com/file/d/1PndoUeqoZpa1ayzvFm2NdY1JWZFsq5K-/view) 
   
 ## License
 N/A
